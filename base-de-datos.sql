@@ -81,3 +81,15 @@ FROM
     Reproducciones r;
     
 select * from Vista_Reproducciones_de_Canciones;
+
+-- 3
+CREATE VIEW Vista_Canciones_Mas_Reproducidas AS
+SELECT 
+    c.titulo AS titulo_cancion,
+    (SELECT COUNT(*) FROM Reproducciones r WHERE r.id_cancion = c.id_cancion) AS total_reproducciones
+FROM 
+    Canciones c
+ORDER BY 
+    total_reproducciones DESC;
+    
+select * from Vista_Canciones_Mas_Reproducidas;
