@@ -93,3 +93,15 @@ ORDER BY
     total_reproducciones DESC;
     
 select * from Vista_Canciones_Mas_Reproducidas;
+
+-- 4 
+CREATE VIEW Vista_Usuarios_Mas_Reproducciones AS
+SELECT 
+    u.nombre AS nombre_usuario,
+    (SELECT COUNT(*) FROM Reproducciones r WHERE r.id_usuario = u.id_usuario) AS total_reproducciones
+FROM 
+    Usuarios u
+ORDER BY 
+    total_reproducciones DESC;
+    
+select * from Vista_Usuarios_Mas_Reproducciones;
