@@ -70,3 +70,14 @@ FROM
     Albumes al;
     
  select * from Vista_Albumes_por_Artista;
+
+ -- 2
+ CREATE VIEW Vista_Reproducciones_de_Canciones AS
+SELECT 
+    (SELECT nombre FROM Usuarios WHERE id_usuario = r.id_usuario) AS nombre_usuario,
+    (SELECT titulo FROM Canciones WHERE id_cancion = r.id_cancion) AS titulo_cancion,
+    r.fecha AS fecha_reproduccion
+FROM 
+    Reproducciones r;
+    
+select * from Vista_Reproducciones_de_Canciones;
